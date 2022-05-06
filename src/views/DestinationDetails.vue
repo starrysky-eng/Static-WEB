@@ -43,7 +43,7 @@
   </div>
 </template>
 <script>
-import store from "@/store";
+import data from "@/data";
 import GoBack from "@/components/GoBack";
 export default {
   components: {
@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     destination() {
-      return store.destinations.find(
+      return data.destinations.find(
         destination => destination.slug === this.slug
       );
     }

@@ -1,14 +1,27 @@
 <template>
   <div class="home">
+    <h1>All Destinations</h1>
+
     <h1>
-      All Destinations
+      {{ number }}
     </h1>
+    <button @click="increment"></button>
+
     <div class="destinations">
+      <router-link :to="{ path: '/testVUEXMapGetters' }" tag="button"
+        >testVUEXMapGetters</router-link
+      >
+      <router-link :to="{ path: '/testVUEXMapMutations' }" tag="button"
+        >testVUEXMapMutations</router-link
+      >
+      <router-link :to="{ path: 'testVUEXMapActions' }" tag="button"
+        >testVUEXMapActions</router-link
+      >
       <div v-for="destination in destinations" :key="destination.name">
         <router-link
           :to="{
             name: 'DestinationDetails',
-            params: { slug: destination.slug }
+            params: { slug: destination.slug },
           }"
         >
           <h2>{{ destination.name }}</h2>
@@ -17,7 +30,7 @@
           <router-link
             :to="{
               name: 'DestinationDetails',
-              params: { slug: destination.slug }
+              params: { slug: destination.slug },
             }"
           >
             <img
@@ -33,15 +46,21 @@
 
 <script>
 // @ is an alias to /src
-import store from "@/store.js";
+import data from "@/data";
+
 export default {
   name: "home",
   components: {},
   data() {
     return {
-      destinations: store.destinations
+      destinations: data.destinations,
     };
-  }
+  },
+  computed: {
+    number() {
+      return this.$store.state.number;
+    },
+  },
 };
 </script>
 <style scoped>

@@ -13,16 +13,16 @@
   </div>
 </template>
 <script>
-import store from "@/store";
+import data from "@/data";
 export default {
   data() {
     return {
-      user: store.user
+      user: data.user
     };
   },
   methods: {
     logOut() {
-      store.user = null;
+      data.user = null;
       this.$router.push("/");
     }
   }

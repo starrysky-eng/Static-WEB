@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import store from "@/store";
+import data from "@/data";
 Vue.use(Router);
 
 const router = new Router({
@@ -32,7 +32,18 @@ const router = new Router({
       component: Home,
       props: true
     },
-
+    {
+      path: "/testVUEXMapGetters",
+      component:() => import("./views/testVUEXMapGetters")
+    },
+    {
+      path: "/testVUEXMapMutations",
+      component:() => import("./views/testVUEXMapMutations")
+    },
+    {
+      path: "/testVUEXMapActions",
+      component:() => import("./views/testVUEXMapActions")
+    },
     {
       path: "/destination/:slug",
       name: "DestinationDetails",
@@ -49,7 +60,7 @@ const router = new Router({
         }
       ],
       beforeEnter: (to, from, next) => {
-        const exists = store.destinations.find(
+        const exists = data.destinations.find(
           destination => destination.slug === to.params.slug
         );
         if (exists) {
@@ -95,7 +106,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.user) {
+    if (data.user) {
       next({
         name: "login",
         query: { redirect: to.fullPath }

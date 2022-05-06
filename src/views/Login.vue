@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import store from "@/store";
+import data from "@/data";
 export default {
   data() {
     return {
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     login() {
-      store.user = this.username;
+      data.user = this.username;
       const redirectPath = this.$route.query.redirect || "/";
       this.$router.push(redirectPath);
     }

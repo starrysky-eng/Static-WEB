@@ -11,7 +11,7 @@
   </section>
 </template>
 <script>
-import store from "@/store.js";
+import data from "@/data.js";
 export default {
   props: {
     slug: {
@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     destination() {
-      return store.destinations.find(
+      return data.destinations.find(
         destination => destination.slug === this.slug
       );
     },

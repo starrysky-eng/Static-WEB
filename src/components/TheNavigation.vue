@@ -29,11 +29,11 @@
 </template>
 
 <script>
-import store from "@/store";
+import data from "@/data";
 export default {
   data() {
     return {
-      destinations: store.destinations
+      destinations: data.destinations
     };
   }
 };
